@@ -1,0 +1,34 @@
+{
+  "name": "grid-me",
+  "version": "1.0.0",
+  "description": "Universal web component to create resizable grid layouts",
+  "module": "dist/esm/index.js",
+  "main": "dist/index.js",
+  "types": "dist/types/components.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "stencil build",
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll"
+  },
+  "dependencies": {
+    "split-me": "^1.1.3"
+  },
+  "devDependencies": {
+    "@stencil/core": "~0.13.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alesgenova/grid-me.git"
+  },
+  "author": "Alessandro Genova",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alesgenova/grid-me"
+  },
+  "homepage": "https://github.com/alesgenova/grid-me"
+}
