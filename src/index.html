@@ -39,8 +39,6 @@
     const colors = ['red', 'green', 'blue'];
     SquareMe.n = n;
     SquareMe.m = m;
-    SquareMe.minSizesH = [1/3, 0, 0];
-    SquareMe.minSizesV = [1/3, 0, 0];
     for (let i = 0; i < m; ++i) {
       for (let j = 0; j < n; ++j) {
         const child = document.createElement('div');
@@ -50,10 +48,6 @@
         SquareMe.appendChild(child);
       }
     }
-    // SquareMe.addEventListener('slotResizedV', (e) => {
-    //   const {divider, sizes} = e.detail;
-    //   console.log(divider, sizes);
-    // });
   </script>
 
 </body>
