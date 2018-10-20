@@ -67,3 +67,27 @@ Simply append a `-h` or `-v` to the attribute name you would use in `SplitMe` an
   <div slot="1 1" class="fill red"></div>
 </square-me>
 ```
+
+### Properties
+
+| Property    | Attribute     | Description                                                                           | Type                |
+| ----------- | ------------- | ------------------------------------------------------------------------------------- | ------------------- |
+| `fixedH`    | `fixed-h`     | Prevent columns from being resized                                                    | `boolean`           |
+| `fixedV`    | `fixed-v`     | Prevent rows from being resized                                                       | `boolean`           |
+| `m`         | `m`           | The number of rows in the grid.                                                       | `number`            |
+| `maxSizesH` | `max-sizes-h` | The columns maximum sizes                                                             | `number[] | string` |
+| `maxSizesV` | `max-sizes-v` | The rows maximum sizes                                                                | `number[] | string` |
+| `minSizesH` | `min-sizes-h` | The columns minimum sizes                                                             | `number[] | string` |
+| `minSizesV` | `min-sizes-v` | The rows minimum sizes                                                                | `number[] | string` |
+| `n`         | `n`           | The number of columns in the grid.                                                    | `number`            |
+| `sizesH`    | `sizes-h`     | The initial column sizes. Acceptable formats are: `"0.33, 0.67"` or `"50%, 25%, 25%"` | `number[] | string` |
+| `sizesV`    | `sizes-v`     | The initial row sizes. Acceptable formats are: `"0.33, 0.67"` or `"50%, 25%, 25%"`    | `number[] | string` |
+| `throttleH` | `throttle-h`  | The minimum time (in ms) between column resize events while dragging.                 | `number`            |
+| `throttleV` | `throttle-v`  | The minimum time (in ms) between row resize events while dragging.                    | `number`            |
+
+### Events
+
+| Event          | Detail       | Description                                              |
+| -------------- | ------------ | -------------------------------------------------------- |
+| `slotResizedH` | IResizeEvent | Emitted every time dragging causes the columns to resize |
+| `slotResizedV` | IResizeEvent | Emitted every time dragging causes the rows to resize    |
