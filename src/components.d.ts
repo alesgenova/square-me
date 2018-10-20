@@ -4,67 +4,82 @@
  * It contains typing information for all components that exist in this project.
  */
 
+
 import '@stencil/core';
 
-import '@resize/split-me';
-import { EventEmitter } from '@stencil/core';
-import { IResizeEvent } from './components/grid-me/interfaces';
+
+import {
+  EventEmitter,
+} from '@stencil/core';
+import {
+  IResizeEvent,
+} from './components/square-me/interfaces';
+
 
 export namespace Components {
-  interface GridMe {
-    fixedH: boolean;
-    fixedV: boolean;
-    m: number;
-    maxSizesH: string | number[];
-    maxSizesV: string | number[];
-    minSizesH: string | number[];
-    minSizesV: string | number[];
-    n: number;
-    sizesH: string | number[];
-    sizesV: string | number[];
-    throttleH: number;
-    throttleV: number;
+
+  interface SquareMe {
+    'fixedH': boolean;
+    'fixedV': boolean;
+    'm': number;
+    'maxSizesH': string | number[];
+    'maxSizesV': string | number[];
+    'minSizesH': string | number[];
+    'minSizesV': string | number[];
+    /**
+    * A description for the columns
+    */
+    'n': number;
+    'sizesH': string | number[];
+    'sizesV': string | number[];
+    'throttleH': number;
+    'throttleV': number;
   }
-  interface GridMeAttributes extends StencilHTMLAttributes {
-    fixedH?: boolean;
-    fixedV?: boolean;
-    m?: number;
-    maxSizesH?: string | number[];
-    maxSizesV?: string | number[];
-    minSizesH?: string | number[];
-    minSizesV?: string | number[];
-    n?: number;
-    onSlotResizedH?: (event: CustomEvent<IResizeEvent>) => void;
-    onSlotResizedV?: (event: CustomEvent<IResizeEvent>) => void;
-    sizesH?: string | number[];
-    sizesV?: string | number[];
-    throttleH?: number;
-    throttleV?: number;
+  interface SquareMeAttributes extends StencilHTMLAttributes {
+    'fixedH'?: boolean;
+    'fixedV'?: boolean;
+    'm'?: number;
+    'maxSizesH'?: string | number[];
+    'maxSizesV'?: string | number[];
+    'minSizesH'?: string | number[];
+    'minSizesV'?: string | number[];
+    /**
+    * A description for the columns
+    */
+    'n'?: number;
+    'onSlotResizedH'?: (event: CustomEvent<IResizeEvent>) => void;
+    'onSlotResizedV'?: (event: CustomEvent<IResizeEvent>) => void;
+    'sizesH'?: string | number[];
+    'sizesV'?: string | number[];
+    'throttleH'?: number;
+    'throttleV'?: number;
   }
 }
 
 declare global {
   interface StencilElementInterfaces {
-    GridMe: Components.GridMe;
+    'SquareMe': Components.SquareMe;
   }
 
   interface StencilIntrinsicElements {
-    'grid-me': Components.GridMeAttributes;
+    'square-me': Components.SquareMeAttributes;
   }
 
-  interface HTMLGridMeElement extends Components.GridMe, HTMLStencilElement {}
-  var HTMLGridMeElement: {
-    prototype: HTMLGridMeElement;
-    new (): HTMLGridMeElement;
+
+  interface HTMLSquareMeElement extends Components.SquareMe, HTMLStencilElement {}
+  var HTMLSquareMeElement: {
+    prototype: HTMLSquareMeElement;
+    new (): HTMLSquareMeElement;
   };
 
   interface HTMLElementTagNameMap {
-    'grid-me': HTMLGridMeElement;
+    'square-me': HTMLSquareMeElement
   }
 
   interface ElementTagNameMap {
-    'grid-me': HTMLGridMeElement;
+    'square-me': HTMLSquareMeElement;
   }
+
 
   export namespace JSX {
     export interface Element {}
@@ -73,4 +88,5 @@ declare global {
     }
   }
   export interface HTMLAttributes extends StencilHTMLAttributes {}
+
 }

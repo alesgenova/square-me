@@ -2,14 +2,14 @@ import { Component, Prop, Event, EventEmitter } from '@stencil/core';
 
 import { IResizeEvent } from './interfaces';
 
-import '@resize/split-me';
+import 'split-me';
 
 @Component({
-  tag: 'grid-me',
-  styleUrl: 'grid-me.css',
+  tag: 'square-me',
+  styleUrl: 'square-me.css',
   shadow: true
 })
-export class GridMe {
+export class SquareMe {
   @Prop()
   n: number = 1;
   @Prop({ mutable: true })
