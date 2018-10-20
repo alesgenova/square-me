@@ -1,6 +1,8 @@
-import { Component, Prop } from '@stencil/core';
+import { Component, Prop, Event, EventEmitter } from '@stencil/core';
 
-import 'split-me';
+import { IResizeEvent } from './interfaces';
+
+import '@resize/split-me';
 
 @Component({
   tag: 'grid-me',
@@ -10,7 +12,7 @@ import 'split-me';
 export class GridMe {
   @Prop()
   n: number = 1;
-  @Prop({mutable: true})
+  @Prop({ mutable: true })
   sizesH: string | number[] = '';
   @Prop()
   minSizesH: string | number[] = '';
@@ -18,6 +20,8 @@ export class GridMe {
   maxSizesH: string | number[] = '';
   @Prop()
   fixedH: boolean = false;
+  @Prop()
+  throttleH: number = 0;
 
   @Prop()
   m: number = 1;
@@ -29,31 +33,45 @@ export class GridMe {
   maxSizesV: string | number[] = '';
   @Prop()
   fixedV: boolean = false;
+  @Prop()
+  throttleV: number = 0;
 
-  onColumnResize = (event: CustomEvent) => {
+  @Event()
+  slotResizedH: EventEmitter<IResizeEvent>;
+
+  @Event()
+  slotResizedV: EventEmitter<IResizeEvent>;
+
+  onColumnResize = (event: CustomEvent<IResizeEvent>) => {
     const { sizes } = event.detail;
     this.sizesH = sizes;
-  }
+    this.slotResizedH.emit(event.detail);
+  };
+
+  onRowResize = (event: CustomEvent<IResizeEvent>) => {
+    this.slotResizedV.emit(event.detail);
+  };
 
   render() {
     const rows = [];
 
-    for (let i = 0; i < this.n; ++i) {
+    for (let i = 0; i < this.m; ++i) {
       const rowSlots = [];
 
-      for (let j = 0; j < this.m; ++j) {
+      for (let j = 0; j < this.n; ++j) {
         rowSlots.push(<slot name={`${i} ${j}`} slot={`${j}`} />);
       }
 
       rows.push(
         <split-me
           slot={`${i}`}
-          n={this.m}
+          n={this.n}
           sizes={this.sizesH}
           minSizes={this.minSizesH}
           maxSizes={this.maxSizesH}
           fixed={this.fixedH}
           onSlotResized={this.onColumnResize}
+          throttle={this.throttleH}
         >
           {rowSlots}
         </split-me>
@@ -62,11 +80,13 @@ export class GridMe {
 
     return (
       <split-me
-        n={this.n}
+        n={this.m}
         sizes={this.sizesV}
         minSizes={this.minSizesV}
         maxSizes={this.maxSizesV}
         fixed={this.fixedV}
+        onSlotResized={this.onRowResize}
+        throttle={this.throttleV}
         d="vertical"
       >
         {rows}

@@ -4,49 +4,53 @@
  * It contains typing information for all components that exist in this project.
  */
 
-
 import '@stencil/core';
 
-import 'split-me';
-
+import '@resize/split-me';
+import { EventEmitter } from '@stencil/core';
+import { IResizeEvent } from './components/grid-me/interfaces';
 
 export namespace Components {
-
   interface GridMe {
-    'fixedH': boolean;
-    'fixedV': boolean;
-    'm': number;
-    'maxSizesH': string | number[];
-    'maxSizesV': string | number[];
-    'minSizesH': string | number[];
-    'minSizesV': string | number[];
-    'n': number;
-    'sizesH': string | number[];
-    'sizesV': string | number[];
+    fixedH: boolean;
+    fixedV: boolean;
+    m: number;
+    maxSizesH: string | number[];
+    maxSizesV: string | number[];
+    minSizesH: string | number[];
+    minSizesV: string | number[];
+    n: number;
+    sizesH: string | number[];
+    sizesV: string | number[];
+    throttleH: number;
+    throttleV: number;
   }
   interface GridMeAttributes extends StencilHTMLAttributes {
-    'fixedH'?: boolean;
-    'fixedV'?: boolean;
-    'm'?: number;
-    'maxSizesH'?: string | number[];
-    'maxSizesV'?: string | number[];
-    'minSizesH'?: string | number[];
-    'minSizesV'?: string | number[];
-    'n'?: number;
-    'sizesH'?: string | number[];
-    'sizesV'?: string | number[];
+    fixedH?: boolean;
+    fixedV?: boolean;
+    m?: number;
+    maxSizesH?: string | number[];
+    maxSizesV?: string | number[];
+    minSizesH?: string | number[];
+    minSizesV?: string | number[];
+    n?: number;
+    onSlotResizedH?: (event: CustomEvent<IResizeEvent>) => void;
+    onSlotResizedV?: (event: CustomEvent<IResizeEvent>) => void;
+    sizesH?: string | number[];
+    sizesV?: string | number[];
+    throttleH?: number;
+    throttleV?: number;
   }
 }
 
 declare global {
   interface StencilElementInterfaces {
-    'GridMe': Components.GridMe;
+    GridMe: Components.GridMe;
   }
 
   interface StencilIntrinsicElements {
     'grid-me': Components.GridMeAttributes;
   }
-
 
   interface HTMLGridMeElement extends Components.GridMe, HTMLStencilElement {}
   var HTMLGridMeElement: {
@@ -55,13 +59,12 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
-    'grid-me': HTMLGridMeElement
+    'grid-me': HTMLGridMeElement;
   }
 
   interface ElementTagNameMap {
     'grid-me': HTMLGridMeElement;
   }
-
 
   export namespace JSX {
     export interface Element {}
@@ -70,5 +73,4 @@ declare global {
     }
   }
   export interface HTMLAttributes extends StencilHTMLAttributes {}
-
 }
