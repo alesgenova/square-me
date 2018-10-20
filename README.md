@@ -5,7 +5,44 @@
 
 `SquareMe` is a universal grid layout built with [Stencil](http://stenciljs.com). It can be embedded in projects using any framework or even plain HTML. Under the hood `SquareMe` leverages the [`SplitMe`](https://github.com/alesgenova/split-me) component.
 
-![demo](./demo.gif)
+See a [Live Demo](https://alesgenova.github.io/square-me/).
+
+<!--
+```
+<custom-element-demo>
+  <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="https://unpkg.com/square-me/dist/square-me.js"></script>
+    <style is="custom-style">
+      .container {
+        width: 100%;
+        height: 15rem;
+      }
+      .fill {
+        width: 100%;
+        height: 100%;
+      }
+      .red {
+        background-color: #f44336;
+      }
+      .green {
+        background-color: #4CAF50;
+      }
+    </style>
+    <div class="container">
+      <square-me m="2" n="2">
+        <div slot="0 0" class="fill red"></div>
+        <div slot="0 1" class="fill green"></div>
+        <div slot="1 0" class="fill green"></div>
+        <div slot="1 1" class="fill red"></div>
+      </square-me>
+    </div>
+  </template>
+</custom-element-demo>
+```
+-->
+
+[![demo](./demo.gif)](https://alesgenova.github.io/square-me/)
 
 ## Installing
 

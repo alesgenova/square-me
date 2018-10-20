@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>SquareMe Demo</title>
+  <script src="https://unpkg.com/square-me/dist/square-me.js"></script>
+</head>
+
+<body>
+  <div class="title-container">
+    <h2>SquareMe - Universal Resizable Grid</h2>
+    <p>
+      <a href="https://github.com/alesgenova/square-me" target="_blank">GitHub</a>
+        - 
+      <a href="https://github.com/alesgenova/square-me/blob/master/index.html" target="_blank">Demo Source</a>
+    </p>
+  </div>
+  
+  <div class="container">
+    <square-me id="grid">
+    </square-me>
+  </div>
+</body>
+
+<style>
+  html, body {
+    height: 98%;
+  }
+
+  .title-container {
+    position: absolute;
+    width: 100%;
+    background-color: rgba(255,255,255,0.25);
+    text-align: center;
+    font-family: sans-serif;
+    color: darkslategray;
+    top: 0;
+    left: 0;
+    z-index: 10;
+  }
+
+  .container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  .fill {
+    height: 100%;
+    width: 100%;
+  }
+
+  .dark-green {
+    background-color: #009688;
+  }
+
+  .red {
+    background-color: #f44336;
+  }
+
+  .green {
+    background-color: #4CAF50;
+  }
+
+  .teal {
+    background-color: #00BCD4;
+  }
+
+  .orange {
+    background-color: #FF9800;
+  }
+
+  .blue {
+    background-color: #3F51B5;
+  }
+
+  .purple {
+    background-color: #9C27B0;
+  }
+
+  .light-green {
+    background-color: #CDDC39;
+  }
+</style>
+
+<script>
+    const m = 3;
+    const n = 5;
+    const squareMe = document.getElementById('grid');
+    const colors = ['red', 'green', 'blue', 'light-green', 'purple'];
+    squareMe.n = n;
+    squareMe.m = m;
+    for (let i = 0; i < m; ++i) {
+      for (let j = 0; j < n; ++j) {
+        const child = document.createElement('div');
+        const color = colors[(i + j) % colors.length];
+        child.setAttribute('slot', `${i} ${j}`);
+        child.setAttribute('class', `fill ${color}`);
+        squareMe.appendChild(child);
+      }
+    }
+  </script>
+
+</html>
+

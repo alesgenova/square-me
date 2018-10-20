@@ -7,7 +7,7 @@
 
 import '@stencil/core';
 
-
+import 'split-me';
 import {
   EventEmitter,
 } from '@stencil/core';
